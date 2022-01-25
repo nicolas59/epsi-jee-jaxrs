@@ -14,9 +14,6 @@
   <profiles>
     <profile>
       <id>mysql-5</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
       <dependencies>
         <dependency>
           <groupId>mysql</groupId>
@@ -37,6 +34,9 @@
     </profile>
     <profile>
       <id>h2</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <dependencies>
         <dependency>
           <groupId>com.h2database</groupId>
