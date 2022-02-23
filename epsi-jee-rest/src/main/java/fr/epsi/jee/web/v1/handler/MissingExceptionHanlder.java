@@ -2,6 +2,7 @@ package fr.epsi.jee.web.v1.handler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -37,9 +38,9 @@ public class MissingExceptionHanlder implements ExceptionMapper<ConstraintViolat
     }
 
     private List<Error> prepare(ConstraintViolationException exception) {
-        final var errors = new ArrayList<Error>();
+        final List errors = new ArrayList<Error>();
         for (ConstraintViolation<?> cv : exception.getConstraintViolations()) {
-            var name= StreamSupport.stream(cv.getPropertyPath().spliterator(), false)
+            Path.Node name= StreamSupport.stream(cv.getPropertyPath().spliterator(), false)
                     .reduce((first, second) -> second).orElse(null);
             errors.add(new Error(String.valueOf(name), cv.getMessage()));
         }

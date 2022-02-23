@@ -38,7 +38,7 @@ public class RestConfig extends ResourceConfig {
        this.register(WadlResource.class);
        property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
 
-       var openApiResource = new OpenApiResource();
+       OpenApiResource openApiResource = new OpenApiResource();
        OpenAPI oas = new OpenAPI();
        Info info = new Info()
                .title("Gestionnaire de commandes")
